@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking The Bank</title>
+    <style>
+        /* Make the body and html take up the full screen */
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        /* Make the ruffle container fullscreen */
+        #ruffle-container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- This will be the container for the Ruffle SWF emulator -->
+    <div id="ruffle-container"></div>
+
+    <!-- Load Ruffle -->
+    <script src="https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@latest/ruffle.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        window.RufflePlayer.config = {
+            autoplay: "on",
+            unmuteOverlay: "hidden"
+        };
+    
+        const ruffle = window.RufflePlayer.newest();
+        const container = document.getElementById("ruffle-container");
+        const player = ruffle.createPlayer();
+        container.appendChild(player);
+    
+        player.load("BreakingTheBank.swf").then(() => {
+            player.play(); // ensure it starts if autoplay allowed
+        });
+    
+        player.style.width = "100%";
+        player.style.height = "100%";
+    });
+    </script>
+</body>
+</html>
