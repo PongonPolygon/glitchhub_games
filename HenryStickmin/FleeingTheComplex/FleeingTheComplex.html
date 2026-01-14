@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleeing The Complex</title>
+    <style>
+        /* Make the body and html take up the full screen */
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        /* Make the ruffle container fullscreen */
+        #ruffle-container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- This will be the container for the Ruffle SWF emulator -->
+    <div id="ruffle-container"></div>
+
+    <!-- Load Ruffle -->
+    <script src="https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@latest/ruffle.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        window.RufflePlayer.config = {
+            autoplay: "on",
+            unmuteOverlay: "hidden"
+        };
+    
+        // List the split files in correct order
+        const parts = [
+            "FleeingTheComplex.swf.part1",
+            "FleeingTheComplex.swf.part2"
+        ];
+    
+        // Fetch and combine the parts
+        async function loadCombinedSWF() {
+            const buffers = [];
+            for (const part of parts) {
+                const res = await fetch(part);
+                buffers.push(await res.arrayBuffer());
+            }
+    
+            // Concatenate into one ArrayBuffer
+            let totalLength = buffers.reduce((sum, b) => sum + b.byteLength, 0);
+            let combined = new Uint8Array(totalLength);
+    
+            let offset = 0;
+            for (const buf of buffers) {
+                combined.set(new Uint8Array(buf), offset);
+                offset += buf.byteLength;
+            }
+            return combined.buffer;
+        }
+    
+        const ruffle = window.RufflePlayer.newest();
+        const container = document.getElementById("ruffle-container");
+        const player = ruffle.createPlayer();
+        container.appendChild(player);
+    
+        // Load combined SWF blob into Ruffle
+        const combinedSWF = await loadCombinedSWF();
+        const blobURL = URL.createObjectURL(new Blob([combinedSWF], { type: "application/x-shockwave-flash" }));
+        
+        player.load(blobURL).then(() => player.play());
+    
+        player.style.width = "100%";
+        player.style.height = "100%";
+    });
+    </script>
+</body>
+</html>
