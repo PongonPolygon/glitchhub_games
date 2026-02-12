@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files>
+  <file name="00_coverscreenshot.png" source="original">
+    <mtime>1689133166</mtime>
+    <size>56749</size>
+    <md5>19df536d66e229c344add2908fae6816</md5>
+    <crc32>468b75d1</crc32>
+    <sha1>024a54c0a419ff0c3720d8dab32f91f625430f90</sha1>
+    <format>PNG</format>
+  </file>
+  <file name="00_coverscreenshot_thumb.jpg" source="derivative">
+    <format>JPEG Thumb</format>
+    <original>00_coverscreenshot.png</original>
+    <mtime>1689134145</mtime>
+    <size>6985</size>
+    <md5>0d9b901448e2aa1bb913c29bd09066e1</md5>
+    <crc32>85000e04</crc32>
+    <sha1>3578b63c8742ccd18694b6c7e85fde6af7e7e2f7</sha1>
+  </file>
+  <file name="5b.swf" source="original">
+    <mtime>1612415195</mtime>
+    <size>1225427</size>
+    <md5>2cfaaf017e82601c7f026b61d8c3492e</md5>
+    <crc32>97d4c128</crc32>
+    <sha1>cd0da54d9ef3bb39517e6e1525dbf1c380aa294e</sha1>
+    <format>Shockwave Flash</format>
+    <length>149.96</length>
+    <height>0</height>
+    <width>0</width>
+  </file>
+  <file name="__ia_thumb.jpg" source="original">
+    <mtime>1689133207</mtime>
+    <size>8518</size>
+    <md5>f80add59e7d8e2ba7bdaf2da4e82f1ba</md5>
+    <crc32>92481060</crc32>
+    <sha1>56f1a51bc00fdef9a754ed068bfe292b871489ec</sha1>
+    <format>Item Tile</format>
+    <rotation>0</rotation>
+  </file>
+  <file name="bfdia5b_archive.torrent" source="metadata">
+    <btih>8347b17e27341cbaa4f849264dd8046a4378b133</btih>
+    <mtime>1769376391</mtime>
+    <size>2845</size>
+    <md5>b4a34d3b29bba33643e7293f55fc4bf0</md5>
+    <crc32>33efa07f</crc32>
+    <sha1>d6a6e3d59c1d1bf572761bc3c0a20a8fe415fd85</sha1>
+    <format>Archive BitTorrent</format>
+  </file>
+  <file name="bfdia5b_files.xml" source="original">
+    <format>Metadata</format>
+    <md5>1dbea53f2c94fd652f8d9ed8dafa0dd7</md5>
+    <summation>md5</summation>
+  </file>
+  <file name="bfdia5b_meta.sqlite" source="original">
+    <mtime>1689133173</mtime>
+    <size>21504</size>
+    <md5>f7ac691b92ab9ba019fc98423b915cd8</md5>
+    <crc32>2f73a5a2</crc32>
+    <sha1>a8fdf5866c2b129e3adcb2cff370b5c37e9be4e7</sha1>
+    <format>Metadata</format>
+  </file>
+  <file name="bfdia5b_meta.xml" source="original">
+    <mtime>1739516428</mtime>
+    <size>1802</size>
+    <md5>b42f2134cd6457efd77d81e9f2da01b3</md5>
+    <crc32>4bd7599e</crc32>
+    <sha1>5da5194037d2dea6e0b12207e8becf097a9a602f</sha1>
+    <format>Metadata</format>
+  </file>
+  <file name="bfdia5b_reviews.xml" source="original">
+    <mtime>1769376389</mtime>
+    <size>15996</size>
+    <md5>a825d22febf5f1243b5e89f5af318f2a</md5>
+    <crc32>b52ad0a7</crc32>
+    <sha1>65b02b84dd7b3e4a641a0e751f003d2117b08226</sha1>
+    <format>Metadata</format>
+  </file>
+  <file name="bfdia5b_screenshot.gif" source="original">
+    <mtime>1689133171</mtime>
+    <size>51175</size>
+    <md5>b348525ba8bc2303e29df308a82eeeb8</md5>
+    <crc32>5f4ccc20</crc32>
+    <sha1>619fefd6acb39e796c016328def12f667b6debc5</sha1>
+    <format>Emulator Screenshot</format>
+  </file>
+  <file name="levels.txt" source="original">
+    <mtime>1612415222</mtime>
+    <size>65560</size>
+    <md5>892a76b4b19e5db4128d7eb86ed8d732</md5>
+    <crc32>8a2b56c8</crc32>
+    <sha1>b56ce2728ca88a7b23a8b1f87e012816994485dd</sha1>
+    <format>Text</format>
+  </file>
+  <file name="screenshot_00.png" source="original">
+    <mtime>1689133168</mtime>
+    <size>56749</size>
+    <md5>19df536d66e229c344add2908fae6816</md5>
+    <crc32>468b75d1</crc32>
+    <sha1>024a54c0a419ff0c3720d8dab32f91f625430f90</sha1>
+    <format>PNG</format>
+  </file>
+  <file name="screenshot_00_thumb.jpg" source="derivative">
+    <format>JPEG Thumb</format>
+    <original>screenshot_00.png</original>
+    <mtime>1689134154</mtime>
+    <size>6985</size>
+    <md5>0d9b901448e2aa1bb913c29bd09066e1</md5>
+    <crc32>85000e04</crc32>
+    <sha1>3578b63c8742ccd18694b6c7e85fde6af7e7e2f7</sha1>
+  </file>
+</files>
