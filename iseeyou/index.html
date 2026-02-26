@@ -112,6 +112,13 @@
             }
 
             let lastTime = performance.now();
+          
+            document.documentElement.addEventListener("mouseleave", (event) => {
+                leftPos.x = 25;
+                rightPos.x = 25;
+                rightPos.y = 25;
+                leftPos.y = 25;
+            });
 
             function update(currentTime) {
             
