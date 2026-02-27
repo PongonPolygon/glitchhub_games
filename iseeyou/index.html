@@ -6,8 +6,7 @@
         <style>@import url("https://fonts.googleapis.com/css?family=Bpmf+Huninn");</style>
     </head>
     <body style="overflow: hidden; background-color: gray; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0;">
-        
-        <script id="eyes" src="eyes.js?size=2&gap=50"></script>
+        <script id="eyes" src="https://cdn.jsdelivr.net/gh/PongonPolygon/glitchhub_games@main/iseeyou/loader.js?size=2&gap=50"></script>
         
         <a id="openEmbeder" style="cursor: pointer; font-size: 25px; color: #202020; font-family: 'Bpmf Huninn'; user-select: none; position: absolute; bottom: 10px;">Embed into your own site!</a>
         
@@ -29,8 +28,12 @@
         <script>
             let sizeVal = 2;
             let gapVal = 50;
+    
+            function getScript() {
+                return `<script src="https://cdn.jsdelivr.net/gh/PongonPolygon/glitchhub_games@main/iseeyou/loader.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
+            }
             
-            document.getElementById("outputScript").value = `<script src="https://cdn.jsdelivr.net/gh/PongonPolygon/glitchhub_games@main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
+            document.getElementById("outputScript").value = getScript();
             
             document.getElementById("openEmbeder").addEventListener("mouseenter", (event) => {
                 document.getElementById("openEmbeder").style.color = "#3a3a3a";
@@ -53,14 +56,14 @@
                 document.getElementById("sizeText").textContent = "Size: " + sizeVal;
                 
                 document.getElementById("eyes").src = `eyes.js/?size=${sizeVal}&gap=${gapVal}`;
-                document.getElementById("outputScript").value = `<script src="https://cdn.jsdelivr.net/gh/PongonPolygon/glitchhub_games@main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
+                document.getElementById("outputScript").value = getScript();
             });
             document.getElementById("gapSlider").addEventListener("input", function() {
                 gapVal = document.getElementById("gapSlider").value;
                 document.getElementById("gapText").textContent = "Gap Size: " + gapVal;
                 
                 document.getElementById("eyes").src = `eyes.js/?size=${sizeVal}&gap=${gapVal}`;
-                document.getElementById("outputScript").value = `<script src="https://cdn.jsdelivr.net/gh/PongonPolygon/glitchhub_games@main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
+                document.getElementById("outputScript").value = getScript();
             });
             
             document.getElementById("copyButton").addEventListener("click", async() => {
@@ -90,7 +93,7 @@
                         button.style.backgroundColor = "lightgray";
                         clearInterval(timer);
                     }
-                }, 1000)
+                }, 750)
             }
         </script>
     </body>
