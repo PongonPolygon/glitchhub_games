@@ -57,6 +57,26 @@ rightPupil.style.top = 25*sizeModify + "px";
 rightPupil.style.left = 25*sizeModify + "px";
 rightSclera.appendChild(rightPupil);
 
+const adButton = document.createElement("button");
+adButton.style.backgroundColor = "rgba(0, 0, 0, 0)";
+adButton.style.width = 2*((100*sizeModify)+2*(4*sizeModify)) + gap*sizeModify + "px"; // goofy ahh size math
+adButton.style.height = ((100*sizeModify)+2*(4*sizeModify)) + "px"; // some more goofy ahh size math
+adButton.style.position = "absolute";
+adButton.style.borderWidth = "0px";
+adButton.style.borderRadius = 52*sizeModify + "px";
+adButton.style.cursor = "pointer";
+eyesDiv.appendChild(adButton);
+
+adButton.addEventListener("click", function() {
+    window.open("https://pongonpolygon.github.io/glitchhub_games/iseeyou/", "_blank");
+});
+
+const parentUrl = window.parent.location.origin;
+
+if (parentUrl == "https://pongonpolygon.github.io") {
+    adButton.remove();
+}
+
 
 //actual functions and stuff
 let leftPos = {
@@ -138,7 +158,9 @@ function update(currentTime) {
     rightPupil.style.top = 25*sizeModify + "px";
     rightPupil.style.left = 25*sizeModify + "px";
     eyesDiv.style.gap = gap*sizeModify + "px";
-    
+    adButton.style.width = 2*((100*sizeModify)+2*(4*sizeModify)) + gap*sizeModify + "px"; // goofy ahh size math
+    adButton.style.height = ((100*sizeModify)+2*(4*sizeModify)) + "px"; // some more goofy ahh size math
+    adButton.style.borderRadius = 100*sizeModify + "px";
 
     const delta = (currentTime - lastTime) / 1000;
     lastTime = currentTime;
