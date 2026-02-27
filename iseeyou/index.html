@@ -30,7 +30,7 @@
             let sizeVal = 2;
             let gapVal = 50;
             
-            document.getElementById("outputScript").value = `<script src="https://raw.githubusercontent.com/PongonPolygon/glitchhub_games/refs/heads/main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
+            document.getElementById("outputScript").value = `<script src="https://cdn.jsdelivr.net/gh/PongonPolygon/glitchhub_games@main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
             
             document.getElementById("openEmbeder").addEventListener("mouseenter", (event) => {
                 document.getElementById("openEmbeder").style.color = "#3a3a3a";
@@ -53,14 +53,14 @@
                 document.getElementById("sizeText").textContent = "Size: " + sizeVal;
                 
                 document.getElementById("eyes").src = `eyes.js/?size=${sizeVal}&gap=${gapVal}`;
-                document.getElementById("outputScript").value = `<script src="https://raw.githubusercontent.com/PongonPolygon/glitchhub_games/refs/heads/main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
+                document.getElementById("outputScript").value = `<script src="https://cdn.jsdelivr.net/gh/PongonPolygon/glitchhub_games@main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
             });
             document.getElementById("gapSlider").addEventListener("input", function() {
                 gapVal = document.getElementById("gapSlider").value;
                 document.getElementById("gapText").textContent = "Gap Size: " + gapVal;
                 
                 document.getElementById("eyes").src = `eyes.js/?size=${sizeVal}&gap=${gapVal}`;
-                document.getElementById("outputScript").value = `<script src="https://raw.githubusercontent.com/PongonPolygon/glitchhub_games/refs/heads/main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
+                document.getElementById("outputScript").value = `<script src="https://cdn.jsdelivr.net/gh/PongonPolygon/glitchhub_games@main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
             });
             
             document.getElementById("copyButton").addEventListener("click", async() => {
