@@ -7,7 +7,7 @@
     </head>
     <body style="overflow: hidden; background-color: gray; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0;">
         
-        <script id="eyes" src="eyes.js/?size=2&gap=50"></script>
+        <script id="eyes" src="eyes.js?size=2&gap=50"></script>
         
         <a id="openEmbeder" style="font-size: 25px; color: #202020; font-family: 'Bpmf Huninn'; user-select: none; position: absolute; bottom: 10px;">Embed into your own site!</a>
         
@@ -53,7 +53,7 @@
                 document.getElementById("sizeText").textContent = "Size: " + sizeVal;
                 
                 document.getElementById("eyes").src = `eyes.js/?size=${sizeVal}&gap=${gapVal}`;
-                document.getElementById("outputScript").value = `<script src="https://raw.githubusercontent.com/PongonPolygon/glitchhub_games/refs/heads/main/iseeyou/eyes.js/eyesJS?size=${sizeVal}&gap=${gapVal}"><\/script>`;
+                document.getElementById("outputScript").value = `<script src="https://raw.githubusercontent.com/PongonPolygon/glitchhub_games/refs/heads/main/iseeyou/eyes.js?size=${sizeVal}&gap=${gapVal}"><\/script>`;
             });
             document.getElementById("gapSlider").addEventListener("input", function() {
                 gapVal = document.getElementById("gapSlider").value;
