@@ -1,93 +1,87 @@
 (function () {
 
-    const instances = [];
+    function create(options = {}) {
 
-    function createEyes(options = {}) {
-        const size = Number(options.size) || 1;
-        const gap = Number(options.gap) || 50;
+        let size = Number(options.size) || 1;
+        let gap = Number(options.gap) || 50;
         const mount = options.mount || document.body;
 
-        let sizeModify = size;
-        let gapSize = gap;
+        const container = document.createElement("div");
+        container.style.display = "flex";
+        container.style.gap = gap * size + "px";
+        mount.appendChild(container);
 
-        const eyesDiv = document.createElement("div");
-        eyesDiv.style.display = "flex";
-        eyesDiv.style.flexDirection = "row";
-        mount.appendChild(eyesDiv);
+        function createEye() {
+            const sclera = document.createElement("div");
+            const pupil = document.createElement("div");
 
-        const leftSclera = document.createElement("div");
-        const rightSclera = document.createElement("div");
-        const leftPupil = document.createElement("div");
-        const rightPupil = document.createElement("div");
+            sclera.style.position = "relative";
+            sclera.style.background = "white";
+            sclera.style.borderRadius = "50%";
+            sclera.style.display = "flex";
+            sclera.style.alignItems = "center";
+            sclera.style.justifyContent = "center";
+            sclera.style.overflow = "hidden";
 
-        [leftSclera, rightSclera].forEach(s => {
-            s.style.background = "white";
-            s.style.borderRadius = "50%";
-            s.style.display = "flex";
-            s.style.justifyContent = "center";
-            s.style.alignItems = "center";
-            s.style.position = "relative";
-            s.style.overflow = "hidden";
-            eyesDiv.appendChild(s);
-        });
+            pupil.style.position = "absolute";
+            pupil.style.background = "black";
+            pupil.style.borderRadius = "50%";
 
-        [leftPupil, rightPupil].forEach(p => {
-            p.style.background = "black";
-            p.style.borderRadius = "50%";
-            p.style.position = "absolute";
-        });
+            sclera.appendChild(pupil);
+            container.appendChild(sclera);
 
-        leftSclera.appendChild(leftPupil);
-        rightSclera.appendChild(rightPupil);
+            return { sclera, pupil };
+        }
+
+        const left = createEye();
+        const right = createEye();
 
         let leftPos = { x: 0, y: 0, cx: 0, cy: 0 };
         let rightPos = { x: 0, y: 0, cx: 0, cy: 0 };
 
         function applySize() {
-            eyesDiv.style.gap = gapSize * sizeModify + "px";
+            container.style.gap = gap * size + "px";
 
-            [leftSclera, rightSclera].forEach(s => {
-                s.style.border = 4 * sizeModify + "px solid black";
-                s.style.height = 100 * sizeModify + "px";
-                s.style.width = 100 * sizeModify + "px";
+            [left, right].forEach(eye => {
+                eye.sclera.style.width = 100 * size + "px";
+                eye.sclera.style.height = 100 * size + "px";
+                eye.sclera.style.border = 4 * size + "px solid black";
+
+                eye.pupil.style.width = 50 * size + "px";
+                eye.pupil.style.height = 50 * size + "px";
             });
 
-            [leftPupil, rightPupil].forEach(p => {
-                p.style.height = 50 * sizeModify + "px";
-                p.style.width = 50 * sizeModify + "px";
-            });
-
-            leftPos.x = rightPos.x = 25 * sizeModify;
-            leftPos.y = rightPos.y = 25 * sizeModify;
+            leftPos.x = rightPos.x = 25 * size;
+            leftPos.y = rightPos.y = 25 * size;
         }
 
         applySize();
 
-        document.addEventListener("mousemove", (event) => {
-            movePupil(leftSclera, leftPos, event);
-            movePupil(rightSclera, rightPos, event);
-        });
-
-        function movePupil(eye, pos, event) {
-            const rect = eye.getBoundingClientRect();
+        function move(eye, pos, event) {
+            const rect = eye.sclera.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
 
             let dx = event.clientX - centerX;
             let dy = event.clientY - centerY;
 
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            const maxRadius = 25 * sizeModify;
+            const max = 25 * size;
+            const dist = Math.sqrt(dx*dx + dy*dy);
 
-            if (distance > maxRadius) {
+            if (dist > max) {
                 const angle = Math.atan2(dy, dx);
-                dx = Math.cos(angle) * maxRadius;
-                dy = Math.sin(angle) * maxRadius;
+                dx = Math.cos(angle) * max;
+                dy = Math.sin(angle) * max;
             }
 
-            pos.x = 25 * sizeModify + dx;
-            pos.y = 25 * sizeModify + dy;
+            pos.x = 25 * size + dx;
+            pos.y = 25 * size + dy;
         }
+
+        document.addEventListener("mousemove", e => {
+            move(left, leftPos, e);
+            move(right, rightPos, e);
+        });
 
         let last = performance.now();
 
@@ -101,10 +95,11 @@
                 pos.cy += (pos.y - pos.cy) * speed * delta;
             });
 
-            leftPupil.style.left = leftPos.cx + "px";
-            leftPupil.style.top = leftPos.cy + "px";
-            rightPupil.style.left = rightPos.cx + "px";
-            rightPupil.style.top = rightPos.cy + "px";
+            left.pupil.style.left = leftPos.cx + "px";
+            left.pupil.style.top = leftPos.cy + "px";
+
+            right.pupil.style.left = rightPos.cx + "px";
+            right.pupil.style.top = rightPos.cy + "px";
 
             requestAnimationFrame(animate);
         }
@@ -114,21 +109,19 @@
         return {
             update(config = {}) {
                 if (config.size !== undefined)
-                    sizeModify = Number(config.size) || 1;
+                    size = Number(config.size) || 1;
 
                 if (config.gap !== undefined)
-                    gapSize = Number(config.gap) || 50;
+                    gap = Number(config.gap) || 50;
 
                 applySize();
             },
             destroy() {
-                eyesDiv.remove();
+                container.remove();
             }
         };
     }
 
-    window.ISeeYou = {
-        create: createEyes
-    };
+    window.ISeeYou = { create };
 
 })();
