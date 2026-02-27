@@ -71,7 +71,16 @@ adButton.addEventListener("click", function() {
     window.open("https://pongonpolygon.github.io/glitchhub_games/iseeyou/", "_blank");
 });
 
-const parentUrl = window.parent.location.origin;
+let parentUrl;
+
+try {
+    parentUrl = window.parent.location.origin;
+} catch (e) {
+    // Cross-origin — cannot access parent
+    parentUrl = document.referrer
+        ? new URL(document.referrer).origin
+        : window.location.origin;
+}
 
 if (parentUrl == "https://pongonpolygon.github.io") {
     adButton.remove();
